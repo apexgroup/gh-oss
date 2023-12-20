@@ -18,12 +18,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("--------------------------------------------)
+            console.log("--------------------------------------------")
             console.log(github.context.ref)
             console.log(github.context.sha)
             console.log(github.context)
             console.log(github)
-            console.log("--------------------------------------------)
+            console.log("--------------------------------------------")
             
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
