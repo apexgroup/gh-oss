@@ -3,6 +3,10 @@ name: Validate contribution
 on:
   pull_request_target:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -14,6 +18,13 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log("--------------------------------------------)
+            console.log(github.context.ref)
+            console.log(github.context.sha)
+            console.log(github.context)
+            console.log(github)
+            console.log("--------------------------------------------)
+            
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -22,3 +33,4 @@ jobs:
             })
 
             return true;
+
